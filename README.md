@@ -34,6 +34,9 @@ $ docker build . -t exact-image-app
 $ docker run -p 8070:8070 -d exact-image-app
 ```
 
+# Access swagger via /swagger path
+`http://localhost:8087/swagger`
+
 # Use built in mechanics
 
 The used service template offers some built in mechanics that can be used to speed app service development.

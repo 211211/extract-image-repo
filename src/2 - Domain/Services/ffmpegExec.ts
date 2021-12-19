@@ -3,7 +3,7 @@ import path from 'path'
 import fs from 'fs'
 
 const tempFolder = path.join(process.cwd(), 'temp')
-
+const ffmpegPath = path.join(process.cwd(), 'ffmpeg')
 export async function ffmpegExec(timestamp: Number = 0, url: string = '') {
     try {
         if (!timestamp || !url) {
@@ -14,7 +14,7 @@ export async function ffmpegExec(timestamp: Number = 0, url: string = '') {
             fs.mkdirSync(tempFolder)
         }
 
-        const extractImageByGivenSecondCommand = `./ffmpeg/ffmpeg -ss ${timestamp} -i ${url} -vframes 1 -vcodec png -an -y ${tempFolder}/%d.png`
+        const extractImageByGivenSecondCommand = `${ffmpegPath}/ffmpeg -ss ${timestamp} -i ${url} -vframes 1 -vcodec png -an -y ${tempFolder}/%d.png`
         console.log({ extractImageByGivenSecondCommand })
 
         await execp(extractImageByGivenSecondCommand, {

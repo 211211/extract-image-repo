@@ -5,4 +5,5 @@ logs
 .env*
 .DS_Store
 ffmpeg/ffmpeg
+ffmpeg/ffmpeg-osx
 temp
