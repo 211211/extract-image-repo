@@ -3,9 +3,10 @@
 This repository holds the code for extracting image from a url at given time frame.
 
 # Setting up development environment
-
-1. Install node js for your system (14.X recommended)
-2. Clone the project
+1. Unzip ffmpeg.zip from ./ffmpeg folder. 
+* `If you're working with OSX. Please download here: https://evermeet.cx/ffmpeg/ and put the binary in ./ffmpeg`
+2. Install node js for your system (14.X recommended)
+3. Clone the project
 
 ```bash
 $ git clone git@github.com:211211/extract-image-repo.git
