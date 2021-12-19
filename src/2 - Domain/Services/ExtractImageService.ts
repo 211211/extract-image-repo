@@ -1,28 +1,21 @@
 import { IExtractImage } from './../DomainObjects/IExtractImage'
 import { isNullOrWhiteSpace } from '../Helpers'
-// import { Client } from '@elastic/elasticsearch'
 import { inject, injectable } from 'inversify'
+import { ffmpegExec } from './ffmpegExec'
 
 export interface IExtractImageService {
-    Extract(
-        skip: number,
-        take: number,
-    ): Promise<IExtractImage>
+    Extract(timestamp: number, url: string): Promise<IExtractImage>
 }
 
 @injectable()
 export class ExtractImageService implements IExtractImageService {
-    // private readonly esClient: Client
-
-    // constructor(@inject('EsClient') client: Client) {
-    //     this.esClient = client
-    // }
-
     public async Extract(
-        skip: number,
-        take: number,
+        timestamp: number,
+        url: string
     ): Promise<IExtractImage> {
-
-        return Promise.resolve(1)
+        const response = await ffmpegExec(timestamp, url)
+        return {
+            body: response
+        }
     }
 }

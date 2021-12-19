@@ -4,9 +4,9 @@ import {
     IExtractImageService
 } from '../2 - Domain/Services/ExtractImageService'
 
-import { Client } from '@elastic/elasticsearch'
 import { Controller } from 'tsoa'
 import { ExtractImageController } from '../1 - REST Interface/Controllers/ExtractImageController'
+import { HealthCheckController } from '../1 - REST Interface/Controllers/HealthCheckController'
 import { RedisClient } from 'redis'
 
 decorate(injectable(), Controller)
@@ -18,14 +18,14 @@ iocContainer
     .toDynamicValue((ctx: any) => new RedisClient({})) // default is http://localhost:6379
     .inTransientScope()
 
-// iocContainer
-//     .bind<Client>('EsClient')
-//     .toDynamicValue((ctx: any) => new Client({ node: 'http://localhost:9200' }))
-//     .inTransientScope()
-
 iocContainer
     .bind<ExtractImageController>(ExtractImageController)
     .to(ExtractImageController)
+    .inTransientScope()
+
+    iocContainer
+    .bind<HealthCheckController>(HealthCheckController)
+    .to(HealthCheckController)
     .inTransientScope()
 
 iocContainer

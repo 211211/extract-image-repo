@@ -3,3 +3,4 @@ build
 definitions
 logs
 .env*
+.DS_Store
