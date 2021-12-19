@@ -17,7 +17,7 @@ iocContainer
     .to(ExtractImageController)
     .inTransientScope()
 
-    iocContainer
+iocContainer
     .bind<HealthCheckController>(HealthCheckController)
     .to(HealthCheckController)
     .inTransientScope()

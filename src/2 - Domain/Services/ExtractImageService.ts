@@ -1,6 +1,5 @@
 import { IExtractImage } from './../DomainObjects/IExtractImage'
-import { isNullOrWhiteSpace } from '../Helpers'
-import { inject, injectable } from 'inversify'
+import { injectable } from 'inversify'
 import { ffmpegExec } from './ffmpegExec'
 
 export interface IExtractImageService {

@@ -22,7 +22,11 @@ const swaggerUiPath = require('swagger-ui-dist').absolutePath()
         throw 'Missing environment!'
     }
 
-    const { APPLICATION_PORT, WHITELIST_DOMAINS, NODE_ENV = 'development' } = process.env
+    const {
+        APPLICATION_PORT,
+        WHITELIST_DOMAINS,
+        NODE_ENV = 'development'
+    } = process.env
 
     if (!APPLICATION_PORT) {
         console.error('Missing APPLICATION_PORT!')

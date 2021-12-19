@@ -1,8 +1,11 @@
+import path from 'path'
 import { Controller, Get, Route, Query, Tags, Request } from 'tsoa'
 import { inject, injectable } from 'inversify'
 import { IExtractImageService } from '../../2 - Domain/Services/ExtractImageService'
 import { Request as ExpressRequest } from 'express'
 import { IExtractImageDto } from '../DTOs/IExtractImageDto'
+
+const SUPPORTED_FILE_TYPES = new Set(['.mp4', '.webm'])
 
 @Route('ffmpeg')
 @Tags('Extract Image')
@@ -31,15 +34,19 @@ export class ExtractImageController extends Controller {
         @Query() url: string = ''
     ): Promise<IExtractImageDto> {
         try {
-            const data = await this.extractImageService.Extract(timestamp, url)
+            const inputFileType = path.extname(url)
+            if (!SUPPORTED_FILE_TYPES.has(inputFileType)) {
+                return {
+                    ok: true,
+                    error: `${inputFileType} extension is not supported. Should be either .mp4 or .webm!`
+                }
+            }
 
-            // should we cache?
-            // this.redisClient.set(request.originalUrl, JSON.stringify(data))
+            const data = await this.extractImageService.Extract(timestamp, url)
 
             return {
                 ok: true,
-                data: data,
-                error: ''
+                data: data
             }
         } catch (error) {
             return {

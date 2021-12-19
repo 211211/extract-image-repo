@@ -30,8 +30,8 @@ $ npm start
 # Build image
 $ docker build . -t exact-image-app
 
-# Run image with 4000 port exposed
-$ docker run -p 4000:4000 -d exact-image-app
+# Run image with 8070 port exposed
+$ docker run -p 8070:8070 -d exact-image-app
 ```
 
 # Use built in mechanics
