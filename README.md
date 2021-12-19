@@ -55,6 +55,11 @@ iocContainer
   .inTransientScope();
 ```
 
+# Troubleshooting
+
+> If you receive only an empty response with `ok: true` then please check the existence of ffmpeg binary file in ./ffmpeg folder
+
+
 # License
 
 > This project is not licensed as open source project. Redistribution is prohibited.
