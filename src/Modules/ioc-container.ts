@@ -7,16 +7,10 @@ import {
 import { Controller } from 'tsoa'
 import { ExtractImageController } from '../1 - REST Interface/Controllers/ExtractImageController'
 import { HealthCheckController } from '../1 - REST Interface/Controllers/HealthCheckController'
-import { RedisClient } from 'redis'
 
 decorate(injectable(), Controller)
 
 const iocContainer = new Container()
-
-iocContainer
-    .bind<RedisClient>('RedisClient')
-    .toDynamicValue((ctx: any) => new RedisClient({})) // default is http://localhost:6379
-    .inTransientScope()
 
 iocContainer
     .bind<ExtractImageController>(ExtractImageController)

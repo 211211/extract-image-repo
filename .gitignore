@@ -4,3 +4,4 @@ definitions
 logs
 .env*
 .DS_Store
+ffmpeg/ffmpeg

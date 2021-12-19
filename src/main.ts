@@ -1,7 +1,6 @@
 import 'reflect-metadata'
 
 import { MINUTE_IN_MS } from './Constants'
-import RedisMiddleware from './1 - REST Interface/Middleware/RedisMiddleware'
 // @ts-ignore
 import { RegisterRoutes } from './routes'
 // import { RegisterServices } from './registerServices'
@@ -82,7 +81,6 @@ const swaggerUiPath = require('swagger-ui-dist').absolutePath()
 
     // Apply rate limiter to all requests
     app.use(limiter)
-    app.use(RedisMiddleware)
 
     // Let TSOA register the controllers
     RegisterRoutes(app)
