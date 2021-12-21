@@ -1,3 +1,25 @@
+# Requirements
+Create an Dockerized API using ExpressJs in Typescript. The purpose of the API is to use ffmpeg to extract an image at a given timestamp for a given video.
+
+The API should have an endpoint at `GET http://localhost:8070/ffmpeg/image?timestamp=${TIMESTAMP_IN_SECONDS}&url=${VIDEO_URL}`.
+A url to a video (mp4/webm) and timestamp in seconds will be provided as the url query parameters. The API must extract an image at the given timestamp without downloading the video to disk or any directory within the container. The image should be base64 encoded and returned in the response body.
+
+A valid request is: `http://localhost:8070/ffmpeg/image?timestamp=1&url=https://public-anios-dev.s3.ap-southeast-1.amazonaws.com/jungle_3s.mp4`
+Timestamp: 1 seconds
+Video URL: https://public-anios-dev.s3.ap-southeast-1.amazonaws.com/jungle_3s.mp4
+
+You can find a ffmpeg binaries at: https://johnvansickle.com/ffmpeg/
+The ffmpeg command to extract the image is:
+```bash
+$ ffmpeg -ss <TIMESTAMPTIMESTAMP_IN_SECONDSE_IN> -i <VIDEO_URL> -vframes 1 -vcodec png -an -y %d.png
+```
+```bash
+$ ffmpeg -ss 1 -i https://public-anios-dev.s3.ap-southeast-1.amazonaws.com/jungle_3s.mp4 -vframes 1 -vcodec png -an -y %d.png
+```
+
+There should be an npm command for me to build the docker image locally. I will run the docker image locally against my test samples to judge the correctness of your assignment. The assignment will be assessed on correctness of solution, cleanliness of code, and organisation of files/folders. Implement this API as you would normally do for your work.
+This repository holds the code for extracting image from a url at given time frame.
+
 # Introduction
 
 This repository holds the code for extracting image from a url at given time frame.
